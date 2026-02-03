@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-work-sans: 'Work Sans', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Strongly apply font + white background (use !important for debugging if something else overrides it) */
+html, body, #__next, .app {
+  font-family: var(--font-work-sans) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff !important;
+}
+
+/* Price — add a dollar sign before common price elements.
+   Use a non-breaking space so layout spacing is consistent. */
+.price,
+.product-price,
+.price-amount,
+.price-figure,
+[data-price] {
+  position: relative;
+}
+.price::before,
+.product-price::before,
+.price-amount::before,
+.price-figure::before,
+[data-price]::before {
+  content: "$\00a0";
+  font-weight: 600;
+  display: inline;
+}
+
+/* Size selected — handle common patterns: .selected class, aria-pressed, data-selected */
+.size.selected::after,
+.size-button.selected::after,
+.sizeOption.selected::after,
+.button-size[aria-pressed="true"]::after,
+.button-size[data-selected="true"]::after {
+  content: "\00a0SELECTED";
+  font-size: 0.85em;
+  color: inherit;
+  font-weight: 600;
+  margin-left: 0; /* spacing provided by the non-breaking space */
+}
