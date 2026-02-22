@@ -11,6 +11,7 @@ export async function POST(req: Request) {
   try {
     const stripe = getStripe();
     const { variantId, name, price, printImage } = await req.json();
+    const safePrintImage = printImage || 'https://raw.githubusercontent.com/Arto/mercator-assets/main/preview.jpg';
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -20,7 +21,7 @@ export async function POST(req: Request) {
             currency: 'usd',
             product_data: {
               name: name,
-              images: [printImage || 'https://raw.githubusercontent.com/Arto/mercator-assets/main/preview.jpg'], 
+              images: [safePrintImage], 
             },
             unit_amount: Math.round(price * 100), // Округляем до центов
           },
@@ -42,12 +43,13 @@ export async function POST(req: Request) {
       ],
       metadata: {
         printfulVariantId: variantId,
-        printful_file_url: printImage, // Передаем ссылку HQ для Printful
+        printful_file_url: safePrintImage,
       },
     });
 
     return NextResponse.json({ url: session.url });
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Unknown checkout error';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

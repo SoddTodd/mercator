@@ -29,6 +29,9 @@ export default function MapClient({ mapData }: { mapData: MercatorMap }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const selected = mapData.sizes?.find(s => s.id === selectedSize) ?? null;
+  const selectedPrintImage = selected
+    ? (mapData.printFiles?.[selected.ratio] || mapData.printImage || '')
+    : '';
 
   const handleCheckout = async () => {
     if (!selected) return; // guard: require selection
@@ -41,7 +44,7 @@ export default function MapClient({ mapData }: { mapData: MercatorMap }) {
           variantId: selected.id,
           name: `Mercator Atlas: ${mapData.title}`,
           price: selected.price,
-          printImage: mapData.printImage, // Send the cloud image URL for Printful
+          printImage: selectedPrintImage,
         }),
       });
       const data = await response.json();
@@ -126,7 +129,7 @@ export default function MapClient({ mapData }: { mapData: MercatorMap }) {
                 <div className="flex flex-col" style={{ gap: '1rem' }}>
                   <label className="text-[10px] uppercase tracking-[0.2em] font-black text-stone-400">Select Dimensions</label>
                   <div className="flex" style={{ gap: '1rem' }}>
-                    {(mapData.sizes ?? []).map((s: any) => {
+                    {(mapData.sizes ?? []).map((s) => {
                       const isSelected = selectedSize === s.id;
                       return (
                         <button
@@ -138,7 +141,7 @@ export default function MapClient({ mapData }: { mapData: MercatorMap }) {
                           aria-pressed={isSelected}
                         >
                           {s.label}
-                          {isSelected && <span className="text-xs font-extrabold uppercase tracking-wide">Selected</span>}
+                          {isSelected && <span className="text-xs font-extrabold uppercase tracking-wide"> Selected</span>}
                         </button>
                       );
                     })}
@@ -160,6 +163,40 @@ export default function MapClient({ mapData }: { mapData: MercatorMap }) {
               >
                 {loading ? 'Processing...' : 'Acquire for Archive'}
               </button>
+
+              <div className="mt-8 md:mt-12 text-center text-[10px] uppercase tracking-[0.16em] font-semibold text-stone-500">
+                <ul className="list-none m-0 p-0 flex flex-wrap justify-center items-center gap-y-2 md:gap-y-4">
+                  <li className="flex items-center py-1">
+                    <Link href="/terms" className="hover:text-stone-900 transition-colors duration-300">
+                      Terms
+                    </Link>
+                    <span className="inline-block mx-2 md:mx-4 opacity-60">•</span>
+                  </li>
+                  <li className="flex items-center py-1">
+                    <Link href="/privacy" className="hover:text-stone-900 transition-colors duration-300">
+                      Privacy
+                    </Link>
+                    <span className="inline-block mx-2 md:mx-4 opacity-60">•</span>
+                  </li>
+                  <li className="flex items-center py-1">
+                    <Link href="/shipping" className="hover:text-stone-900 transition-colors duration-300">
+                      Shipping
+                    </Link>
+                    <span className="inline-block mx-2 md:mx-4 opacity-60">•</span>
+                  </li>
+                  <li className="flex items-center py-1">
+                    <Link href="/returns" className="hover:text-stone-900 transition-colors duration-300">
+                      Returns
+                    </Link>
+                    <span className="inline-block mx-2 md:mx-4 opacity-60">•</span>
+                  </li>
+                  <li className="flex items-center py-1">
+                    <Link href="/withdrawal" className="hover:text-stone-900 transition-colors duration-300">
+                      Withdrawal
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
