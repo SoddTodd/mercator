@@ -29,9 +29,6 @@ export default function MapClient({ mapData }: { mapData: MercatorMap }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const selected = mapData.sizes?.find(s => s.id === selectedSize) ?? null;
-  const selectedPrintImage = selected
-    ? (mapData.printFiles?.[selected.ratio] || mapData.printImage || '')
-    : '';
 
   const handleCheckout = async () => {
     if (!selected) return; // guard: require selection
@@ -41,12 +38,13 @@ export default function MapClient({ mapData }: { mapData: MercatorMap }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          variantId: selected.id,
-          name: `Mercator Atlas: ${mapData.title}`,
-          price: selected.price,
-          printImage: selectedPrintImage,
+          mapSlug: mapData.slug,
+          sizeId: selected.id,
         }),
       });
+      if (!response.ok) {
+        throw new Error('Failed to create checkout session');
+      }
       const data = await response.json();
       if (data.url) window.location.href = data.url;
     } finally {

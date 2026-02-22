@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
+import { getMapBySlug } from '../../../lib/maps-store';
+
+const FALLBACK_PRINT_IMAGE = 'https://raw.githubusercontent.com/Arto/mercator-assets/main/preview.jpg';
 
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY;
@@ -10,8 +13,29 @@ function getStripe() {
 export async function POST(req: Request) {
   try {
     const stripe = getStripe();
-    const { variantId, name, price, printImage } = await req.json();
-    const safePrintImage = printImage || 'https://raw.githubusercontent.com/Arto/mercator-assets/main/preview.jpg';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+    if (!siteUrl) {
+      throw new Error('NEXT_PUBLIC_SITE_URL is not set');
+    }
+
+    const { mapSlug, sizeId } = await req.json();
+    if (!mapSlug || !sizeId) {
+      return NextResponse.json({ error: 'mapSlug and sizeId are required' }, { status: 400 });
+    }
+
+    const map = await getMapBySlug(String(mapSlug));
+    if (!map) {
+      return NextResponse.json({ error: 'Map not found' }, { status: 404 });
+    }
+
+    const selectedSize = (map.sizes ?? []).find((size) => size.id === String(sizeId));
+    if (!selectedSize) {
+      return NextResponse.json({ error: 'Invalid size selected' }, { status: 400 });
+    }
+
+    const safePrintImage = map.printFiles?.[selectedSize.ratio] || map.printImage || FALLBACK_PRINT_IMAGE;
+    const safeName = `Mercator Atlas: ${map.title}`;
+    const safeUnitAmount = Math.round(selectedSize.price * 100);
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -20,17 +44,17 @@ export async function POST(req: Request) {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: name,
-              images: [safePrintImage], 
+              name: safeName,
+              images: [safePrintImage],
             },
-            unit_amount: Math.round(price * 100), // Округляем до центов
+            unit_amount: safeUnitAmount,
           },
           quantity: 1,
         },
       ],
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/success`,
-      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/`,
+      success_url: `${siteUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${siteUrl}/`,
       shipping_address_collection: { allowed_countries: ['US', 'CA', 'GB', 'DE', 'FR'] },
       shipping_options: [
         {
@@ -42,7 +66,9 @@ export async function POST(req: Request) {
         },
       ],
       metadata: {
-        printfulVariantId: variantId,
+        mapSlug: map.slug,
+        sizeId: selectedSize.id,
+        printfulVariantId: selectedSize.id,
         printful_file_url: safePrintImage,
       },
     });
