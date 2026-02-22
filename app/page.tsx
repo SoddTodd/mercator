@@ -13,6 +13,26 @@ const workSans = Work_Sans({
 export default function Home() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [maps, setMaps] = useState<MercatorMap[]>(MAPS);
+  const closeDropdownTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openDropdown = React.useCallback(() => {
+    if (closeDropdownTimeoutRef.current) {
+      clearTimeout(closeDropdownTimeoutRef.current);
+      closeDropdownTimeoutRef.current = null;
+    }
+    setShowDropdown(true);
+  }, []);
+
+  const closeDropdownWithDelay = React.useCallback(() => {
+    if (closeDropdownTimeoutRef.current) {
+      clearTimeout(closeDropdownTimeoutRef.current);
+    }
+
+    closeDropdownTimeoutRef.current = setTimeout(() => {
+      setShowDropdown(false);
+      closeDropdownTimeoutRef.current = null;
+    }, 180);
+  }, []);
 
   React.useEffect(() => {
     let cancelled = false;
@@ -35,6 +55,14 @@ export default function Home() {
     };
   }, []);
 
+  React.useEffect(() => {
+    return () => {
+      if (closeDropdownTimeoutRef.current) {
+        clearTimeout(closeDropdownTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
     <main className={`${workSans.variable} min-h-screen bg-[#fdfcfb] text-[#1a1a1a] font-sans`}>
       {/* Side Navigation */}
@@ -50,8 +78,8 @@ export default function Home() {
           {/* All Plates Dropdown */}
           <div 
             className="relative"
-            onMouseEnter={() => setShowDropdown(true)}
-            onMouseLeave={() => setShowDropdown(false)}
+            onMouseEnter={openDropdown}
+            onMouseLeave={closeDropdownWithDelay}
           >
             <button
               className="text-xs uppercase tracking-[0.2em] font-semibold text-stone-800 hover:text-stone-950 transition-colors duration-300 writing-mode-vertical-rl cursor-pointer"
@@ -60,7 +88,12 @@ export default function Home() {
             </button>
             
             {showDropdown && (
-              <div className="absolute left-12 top-0 bg-white shadow-2xl rounded-lg p-6 w-[500px] max-h-[80vh] overflow-y-auto border border-stone-200 backdrop-blur-none" style={{ backgroundColor: '#ffffff' }}>
+              <div
+                className="absolute left-12 top-0 bg-white shadow-2xl rounded-lg p-6 w-[500px] max-h-[80vh] overflow-y-auto border border-stone-200 backdrop-blur-none"
+                style={{ backgroundColor: '#ffffff' }}
+                onMouseEnter={openDropdown}
+                onMouseLeave={closeDropdownWithDelay}
+              >
                 <h3 className="text-sm uppercase tracking-[0.2em] font-semibold text-stone-800 mb-4 pb-3 border-b border-stone-200">
                   The Collection
                 </h3>
