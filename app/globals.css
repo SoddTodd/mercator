@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700;900&display=swap');
+
+@import "tailwindcss";
+
+.writing-mode-vertical-rl {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+:root {
+  --font-work-sans: 'Work Sans', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Force font + white background on common wrappers */
+html, body, #__next, main, header, footer, .app, .page, .site, .layout {
+  font-family: var(--font-work-sans) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff !important;
+}
+
+/* Also override any background set on generic containers */
+#__next > div,
+[class*="container"],
+[class*="wrap"],
+[class*="root"],
+[class*="layout"] {
+  background-color: transparent !important; /* allow body white to show */
+}
+
+/* Force white background on root and immediate wrappers */
+html, body, #__next, #__next > div, #__next > div > div {
+  background-color: #ffffff !important;
+}
+
+/* Price — keep dollar sign */
+.price,
+.product-price,
+.price-amount,
+.price-figure,
+.product__price,
+.price__amount,
+[data-price],
+[data-testid="price"],
+span[class*="price"],
+div[class*="price"] {
+  position: relative;
+}
+.price::before,
+.product-price::before,
+.price-amount::before,
+.price-figure::before,
+.product__price::before,
+.price__amount::before,
+[data-price]::before,
+[data-testid="price"]::before,
+span[class*="price"]::before,
+div[class*="price"]::before {
+  content: "$\00a0";
+  font-weight: 600;
+  display: inline;
+}
+
+/* Target numeric price inside the right-aligned price block */
+.text-right > .text-3xl,
+.text-right > [class*="text-3xl"] {
+  position: relative;
+}
+.text-right > .text-3xl::before,
+.text-right > [class*="text-3xl"]::before {
+  content: "$\00a0";
+  font-weight: 600;
+  display: inline;
+}
+
+/* Only append SELECTED when a pressed/selected button DOES NOT already contain a small inline label */
+button[aria-pressed="true"]:not(:has(span[class*="text"]))::after,
+button[data-selected="true"]:not(:has(span[class*="text"]))::after,
+[role="button"][aria-pressed="true"]:not(:has(span[class*="text"]))::after {
+  content: "\00a0SELECTED";
+  font-size: 0.85em;
+  font-weight: 600;
+  color: inherit;
+}
+
+/* Prevent the broad pseudo-element from duplicating labels */
+[class*="selected"]::after,
+.is-selected::after,
+.active::after {
+  content: none !important;
+}
+
+/* Remove any generated SELECTED pseudo-elements */
+button::after,
+[role="button"]::after,
+[class*="selected"]::after,
+.is-selected::after,
+.active::after {
+  content: none !important;
+}
+
+/* Use the inline <span> inside buttons for the Selected label and add space */
+button[aria-pressed="true"] > span,
+button[data-selected="true"] > span {
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+/* Ensure buttons without an inline span (thumbnails) don't get any overlay text */
+button:not(:has(> span))::after {
+  content: none !important;
+}
+
+/* Debug helpers (remove when resolved) */
+body.debug-show-bg * {
+  outline: none !important;
+}
