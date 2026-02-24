@@ -10,7 +10,7 @@ export default function ReturnsPage() {
           <section>
             <h2 className="text-xl font-semibold mb-3">English</h2>
             <ul className="list-disc pl-6 space-y-2">
-              <li>If an item arrives defective, damaged, or incorrect, contact [support email] within [X] days with photos and order number.</li>
+              <li>If an item arrives defective, damaged, or incorrect, contact info@monochrome-matters.eu within 14 days with photos and order number.</li>
               <li>Where legally required, refunds are issued to the original payment method after validation.</li>
               <li>For non-defective returns, your statutory withdrawal rights (EU/UK consumers) apply unless a legal exception applies.</li>
               <li>Custom/personalized products may be excluded from cancellation/return where permitted by law.</li>
@@ -21,7 +21,7 @@ export default function ReturnsPage() {
           <section>
             <h2 className="text-xl font-semibold mb-3">Deutsch</h2>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Bei mangelhafter, beschädigter oder falscher Ware kontaktiere [Support-E-Mail] innerhalb von [X] Tagen mit Fotos und Bestellnummer.</li>
+              <li>Bei mangelhafter, beschädigter oder falscher Ware kontaktiere info@monochrome-matters.eu innerhalb von 14 Tagen mit Fotos und Bestellnummer.</li>
               <li>Soweit gesetzlich vorgesehen, erfolgt die Erstattung nach Prüfung über das ursprüngliche Zahlungsmittel.</li>
               <li>Für nicht mangelhafte Rücksendungen gelten die gesetzlichen Widerrufsrechte (EU/UK), soweit keine Ausnahme greift.</li>
               <li>Personalisierte oder auf Bestellung gefertigte Produkte können vom Widerruf ausgeschlossen sein, soweit rechtlich zulässig.</li>

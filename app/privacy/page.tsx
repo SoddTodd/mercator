@@ -13,7 +13,7 @@ export default function PrivacyPage() {
               This policy explains how we process personal data when you visit this store and place orders. The merchant is based in Berlin, Germany and sells to the US, EU, and UK.
             </p>
             <ul className="list-disc pl-6 mt-4 space-y-2">
-              <li><strong>Controller:</strong> [Full legal name], [Berlin address], [email].</li>
+              <li><strong>Controller:</strong> Artem Ushan, Wisbyer Strasse 24, 10439 Berlin, Germany, info@monochrome-matters.eu.</li>
               <li><strong>Data collected:</strong> name, shipping/billing address, email, phone (if provided), order details, payment status, IP and technical logs.</li>
               <li><strong>Purposes:</strong> order fulfillment, payment processing, fraud prevention, customer support, legal compliance.</li>
               <li><strong>Legal bases (GDPR):</strong> Art. 6(1)(b) contract, Art. 6(1)(c) legal obligations, Art. 6(1)(f) legitimate interests.</li>
@@ -30,7 +30,7 @@ export default function PrivacyPage() {
               Diese Datenschutzerklärung erläutert, wie personenbezogene Daten beim Besuch dieses Shops und bei Bestellungen verarbeitet werden.
             </p>
             <ul className="list-disc pl-6 mt-4 space-y-2">
-              <li><strong>Verantwortlicher:</strong> [Vollständiger Name], [Anschrift Berlin], [E-Mail].</li>
+              <li><strong>Verantwortlicher:</strong> Artem Ushan, Wisbyer Strasse 24, 10439 Berlin, Deutschland, info@monochrome-matters.eu.</li>
               <li><strong>Verarbeitete Daten:</strong> Name, Liefer-/Rechnungsadresse, E-Mail, ggf. Telefonnummer, Bestelldaten, Zahlungsstatus, IP und technische Protokolle.</li>
               <li><strong>Zwecke:</strong> Vertragsabwicklung, Zahlungsabwicklung, Betrugsprävention, Kundenservice, gesetzliche Pflichten.</li>
               <li><strong>Rechtsgrundlagen:</strong> Art. 6 Abs. 1 lit. b DSGVO, lit. c DSGVO, lit. f DSGVO.</li>
@@ -41,9 +41,6 @@ export default function PrivacyPage() {
             </ul>
           </section>
 
-          <p className="text-xs text-stone-500">
-            Add your exact provider entities/addresses and cookie/tool details before publishing.
-          </p>
         </div>
 
         <div className="mt-10">

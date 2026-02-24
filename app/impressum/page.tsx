@@ -12,20 +12,18 @@ export default function ImpressumPage() {
             <p>
               Angaben gemäß § 5 TMG
               <br />
-              [Vollständiger Name]
+              Artem Ushan
               <br />
-              [Unternehmensname, falls verwendet]
+              Monochrome Matters
               <br />
-              [Straße, Hausnummer]
+              Wisbyer Strasse 24
               <br />
-              [PLZ, Berlin, Deutschland]
+              10439 Berlin, Deutschland
             </p>
             <p className="mt-4">
               Kontakt
               <br />
-              E-Mail: [deine@email.de]
-              <br />
-              Telefon (optional): [Telefonnummer]
+              E-Mail: info@monochrome-matters.eu
             </p>
             <p className="mt-4">
               Rechtsform: Einzelunternehmen (Kleinunternehmer)
@@ -35,7 +33,7 @@ export default function ImpressumPage() {
             <p className="mt-4">
               Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:
               <br />
-              [Vollständiger Name, Anschrift wie oben]
+              Artem Ushan, Wisbyer Strasse 24, 10439 Berlin, Deutschland
             </p>
           </section>
 
@@ -44,20 +42,18 @@ export default function ImpressumPage() {
             <p>
               Information according to German legal notice requirements (§ 5 TMG)
               <br />
-              [Full legal name]
+              Artem Ushan
               <br />
-              [Business name, if used]
+              Monochrome Matters
               <br />
-              [Street, number]
+              Wisbyer Strasse 24
               <br />
-              [Postal code, Berlin, Germany]
+              10439 Berlin, Germany
             </p>
             <p className="mt-4">
               Contact
               <br />
-              Email: [your@email.com]
-              <br />
-              Phone (optional): [phone number]
+              Email: info@monochrome-matters.eu
             </p>
             <p className="mt-4">
               Legal form: Sole proprietor (small business under German law)
@@ -66,9 +62,6 @@ export default function ImpressumPage() {
             </p>
           </section>
 
-          <p className="text-xs text-stone-500">
-            Replace all bracketed placeholders before publishing.
-          </p>
         </div>
 
         <div className="mt-10">

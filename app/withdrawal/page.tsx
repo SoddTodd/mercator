@@ -18,11 +18,11 @@ export default function WithdrawalPage() {
             <p className="mt-4">
               To exercise withdrawal, inform us at:
               <br />
-              [Full legal name]
+              Artem Ushan
               <br />
-              [Address]
+              Wisbyer Strasse 24, 10439 Berlin, Germany
               <br />
-              [Email]
+              info@monochrome-matters.eu
             </p>
             <p className="mt-4">
               We reimburse all payments received, including standard delivery costs, without undue delay and no later than 14 days after receiving your withdrawal notice, using the same payment method unless agreed otherwise.
@@ -43,11 +43,11 @@ export default function WithdrawalPage() {
             <p className="mt-4">
               Zur Ausübung des Widerrufs richte deine Erklärung an:
               <br />
-              [Vollständiger Name]
+              Artem Ushan
               <br />
-              [Anschrift]
+              Wisbyer Strasse 24, 10439 Berlin, Deutschland
               <br />
-              [E-Mail]
+              info@monochrome-matters.eu
             </p>
             <p className="mt-4">
               Wir erstatten alle Zahlungen einschließlich Standard-Lieferkosten unverzüglich und spätestens binnen 14 Tagen ab Eingang der Widerrufserklärung, unter Verwendung desselben Zahlungsmittels, sofern nichts anderes vereinbart wurde.

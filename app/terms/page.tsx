@@ -10,7 +10,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-semibold mb-3">English</h2>
             <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Merchant:</strong> [Full legal name], Berlin, Germany.</li>
+              <li><strong>Merchant:</strong> Artem Ushan, Berlin, Germany.</li>
               <li><strong>Scope:</strong> These terms apply to all orders via this online store.</li>
               <li><strong>Contract conclusion:</strong> Product listings are invitations to order; the contract is formed when order acceptance is confirmed.</li>
               <li><strong>Prices:</strong> Final prices are shown at checkout. No VAT is charged under § 19 UStG (small business scheme).</li>
@@ -25,7 +25,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-semibold mb-3">Deutsch</h2>
             <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Anbieter:</strong> [Vollständiger Name], Berlin, Deutschland.</li>
+              <li><strong>Anbieter:</strong> Artem Ushan, Berlin, Deutschland.</li>
               <li><strong>Geltungsbereich:</strong> Diese Bedingungen gelten für alle Bestellungen über diesen Online-Shop.</li>
               <li><strong>Vertragsschluss:</strong> Produktdarstellungen sind unverbindlich; der Vertrag kommt mit Bestellbestätigung zustande.</li>
               <li><strong>Preise:</strong> Endpreise werden im Checkout angezeigt. Keine Umsatzsteuer gemäß § 19 UStG.</li>

@@ -182,7 +182,7 @@ export default function Home() {
             please reach out to us.
           </p>
           <a 
-            href="mailto:info@mercatorarchives.com" 
+            href="mailto:info@monochrome-matters.eu" 
             className="inline-block text-sm uppercase tracking-[0.3em] font-semibold text-stone-600 hover:text-stone-900 transition-colors duration-300"
             style={{ marginTop: '4rem' }}
           >
