@@ -25,6 +25,7 @@ export async function GET(req: NextRequest) {
 
   const summary = maps.map((map) => ({
     id: map.id,
+    chapterSlug: map.chapterSlug,
     slug: map.slug,
     title: map.title,
     year: map.year,
@@ -52,6 +53,7 @@ export async function POST(req: NextRequest) {
 
     const map: MercatorMap = {
       id: nextId,
+      chapterSlug: body.chapterSlug?.toString()?.trim() || 'the-mercator-archives',
       slug,
       title: body.title?.toString()?.trim() || 'Untitled map',
       year: body.year?.toString()?.trim() || '',

@@ -9,6 +9,7 @@ export type MapSize = {
 
 export type MercatorMap = {
   id: string;
+  chapterSlug?: string;
   slug: string;
   title: string;
   year: string;

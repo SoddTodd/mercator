@@ -1,0 +1,54 @@
+[
+  {
+    "id": "01",
+    "order": 1,
+    "slug": "nature-landscapes-noir",
+    "title": "Nature & Landscapes Noir",
+    "description": "This collection brings together works where landscape meets the aesthetics of noir: deep contrasts, dramatic shadows and endless horizons.",
+    "heroImage": "/maps/heroNL.webp",
+    "seoTitle": "Nature & Landscapes Noir",
+    "seoDescription": "Atmospheric monochrome nature compositions and moody wide-format landscapes.",
+    "href": "/collections/nature-landscapes-noir",
+    "status": "New direction",
+    "isLive": false
+  },
+  {
+    "id": "02",
+    "order": 2,
+    "slug": "vintage-japan-archives",
+    "title": "Vintage Japan Archives",
+    "description": "Immerse yourself in the aesthetics of Japanese retro. New collection is more than just images - it is a rare discovery from the world of vintage Japanese advertising and posters.",
+    "heroImage": "",
+    "seoTitle": "Vintage Japan Archives",
+    "seoDescription": "Immerse yourself in the aesthetics of Japanese retro. New collection is more than just images - it is a rare discovery from the world of vintage Japanese advertising and posters.",
+    "href": "/collections/vintage-japan-archives",
+    "status": "New direction",
+    "isLive": false
+  },
+  {
+    "id": "03",
+    "order": 3,
+    "slug": "the-mercator-archives",
+    "title": "The Mercator Archives",
+    "description": "Exquisite cartographic prints to decorate your study, living room or library. Carefully restored details, antique aesthetics and the noble shades of old paper. These maps will become a status accent in your interior and a unique gift for collectors and connoisseurs of vintage style.\n",
+    "heroImage": "",
+    "seoTitle": "The Mercator Archives",
+    "seoDescription": "Exquisite cartographic prints to decorate your study, living room or library. Carefully restored details, antique aesthetics and the noble shades of old paper. These maps will become a status accent in your interior and a unique gift for collectors and connoisseurs of vintage style.",
+    "href": "/collections/the-mercator-archives",
+    "status": "Live collection",
+    "isLive": true
+  },
+  {
+    "id": "04",
+    "order": 4,
+    "slug": "engineering-patents",
+    "title": "Engineering & Patents",
+    "description": "The collection features iconic drawings of humanity's greatest inventions. High-quality reproductions of patents for legendary devices are a stylish way to highlight your passion for your work and decorate your workspace with a historical artefact.",
+    "heroImage": "",
+    "seoTitle": "Engineering & Patents",
+    "seoDescription": "The collection features iconic drawings of humanity's greatest inventions. High-quality reproductions of patents for legendary devices are a stylish way to highlight your passion for your work and decorate your workspace with a historical artefact.",
+    "href": "/collections/engineering-patents",
+    "status": "New direction",
+    "isLive": false
+  }
+]

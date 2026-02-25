@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Work_Sans } from 'next/font/google';
 import { MAPS, MercatorMap } from '../lib/maps';
+import { Chapter, DEFAULT_CHAPTERS, sortChapters } from '../lib/chapters';
 
 const workSans = Work_Sans({ 
   subsets: ['latin'], 
@@ -11,26 +12,27 @@ const workSans = Work_Sans({
 });
 
 export default function Home() {
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [showChapterMenu, setShowChapterMenu] = useState(false);
   const [maps, setMaps] = useState<MercatorMap[]>(MAPS);
-  const closeDropdownTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [chapters, setChapters] = useState<Chapter[]>(sortChapters(DEFAULT_CHAPTERS));
+  const closeMenuTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const openDropdown = React.useCallback(() => {
-    if (closeDropdownTimeoutRef.current) {
-      clearTimeout(closeDropdownTimeoutRef.current);
-      closeDropdownTimeoutRef.current = null;
+  const openChapterMenu = React.useCallback(() => {
+    if (closeMenuTimeoutRef.current) {
+      clearTimeout(closeMenuTimeoutRef.current);
+      closeMenuTimeoutRef.current = null;
     }
-    setShowDropdown(true);
+    setShowChapterMenu(true);
   }, []);
 
-  const closeDropdownWithDelay = React.useCallback(() => {
-    if (closeDropdownTimeoutRef.current) {
-      clearTimeout(closeDropdownTimeoutRef.current);
+  const closeChapterMenuWithDelay = React.useCallback(() => {
+    if (closeMenuTimeoutRef.current) {
+      clearTimeout(closeMenuTimeoutRef.current);
     }
 
-    closeDropdownTimeoutRef.current = setTimeout(() => {
-      setShowDropdown(false);
-      closeDropdownTimeoutRef.current = null;
+    closeMenuTimeoutRef.current = setTimeout(() => {
+      setShowChapterMenu(false);
+      closeMenuTimeoutRef.current = null;
     }, 180);
   }, []);
 
@@ -41,78 +43,98 @@ export default function Home() {
       try {
         const response = await fetch('/api/maps');
         if (!response.ok) return;
-        const nextMaps = await response.json();
+        const nextMaps = (await response.json()) as MercatorMap[];
         if (!cancelled && Array.isArray(nextMaps) && nextMaps.length > 0) {
-          setMaps(nextMaps);
+          setMaps(
+            nextMaps.map((map) => ({
+              ...map,
+              chapterSlug: map.chapterSlug || 'the-mercator-archives',
+            }))
+          );
+        }
+      } catch {
+      }
+    }
+
+    async function loadChapters() {
+      try {
+        const response = await fetch('/api/chapters');
+        if (!response.ok) return;
+        const nextChapters = (await response.json()) as Chapter[];
+        if (!cancelled && Array.isArray(nextChapters) && nextChapters.length > 0) {
+          setChapters(sortChapters(nextChapters));
         }
       } catch {
       }
     }
 
     loadMaps();
+    loadChapters();
     return () => {
       cancelled = true;
     };
   }, []);
 
+  const mercatorMaps = React.useMemo(
+    () => maps.filter((map) => (map.chapterSlug || 'the-mercator-archives') === 'the-mercator-archives'),
+    [maps]
+  );
+
   React.useEffect(() => {
     return () => {
-      if (closeDropdownTimeoutRef.current) {
-        clearTimeout(closeDropdownTimeoutRef.current);
+      if (closeMenuTimeoutRef.current) {
+        clearTimeout(closeMenuTimeoutRef.current);
       }
     };
   }, []);
 
   return (
     <main className={`${workSans.variable} min-h-screen bg-[#fdfcfb] text-[#1a1a1a] font-sans`}>
-      {/* Side Navigation */}
       <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-[100]">
         <div className="flex flex-col gap-6">
-          <a 
-            href="#about" 
+          <a
+            href="#about"
             className="text-xs uppercase tracking-[0.2em] font-semibold text-stone-800 hover:text-stone-950 transition-colors duration-300 writing-mode-vertical-rl"
           >
             About
           </a>
-          
-          {/* All Plates Dropdown */}
-          <div 
+
+          <div
             className="relative"
-            onMouseEnter={openDropdown}
-            onMouseLeave={closeDropdownWithDelay}
+            onMouseEnter={openChapterMenu}
+            onMouseLeave={closeChapterMenuWithDelay}
           >
             <button
               className="text-xs uppercase tracking-[0.2em] font-semibold text-stone-800 hover:text-stone-950 transition-colors duration-300 writing-mode-vertical-rl cursor-pointer"
             >
-              All Plates
+              Collections
             </button>
-            
-            {showDropdown && (
+
+            {showChapterMenu && (
               <div
-                className="absolute left-12 top-0 bg-white shadow-2xl rounded-lg p-6 w-[500px] max-h-[80vh] overflow-y-auto border border-stone-200 backdrop-blur-none"
-                style={{ backgroundColor: '#ffffff' }}
-                onMouseEnter={openDropdown}
-                onMouseLeave={closeDropdownWithDelay}
+                className="absolute left-12 top-0 bg-white shadow-2xl rounded-lg p-6 w-[420px] border border-stone-200"
+                onMouseEnter={openChapterMenu}
+                onMouseLeave={closeChapterMenuWithDelay}
               >
                 <h3 className="text-sm uppercase tracking-[0.2em] font-semibold text-stone-800 mb-4 pb-3 border-b border-stone-200">
-                  The Collection
+                  Poster Collections
                 </h3>
-                <div className="grid grid-cols-2 gap-3">
-                  {maps.map((map) => (
+                <div className="grid grid-cols-1 gap-3">
+                  {chapters.map((chapter) => (
                     <Link
-                      key={map.id}
-                      href={`/map/${map.slug}`}
+                      key={chapter.slug}
+                      href={chapter.href}
                       className="group flex items-start gap-3 p-3 rounded hover:bg-stone-50 transition-colors duration-200"
                     >
                       <span className="text-[10px] font-bold text-stone-400 mt-1 min-w-[30px]">
-                        {map.id.padStart(2, '0')}
+                        {chapter.id}
                       </span>
                       <div className="flex-1">
                         <p className="text-sm font-medium text-stone-800 group-hover:text-stone-950 leading-tight">
-                          {map.title}
+                          {chapter.title}
                         </p>
                         <p className="text-[10px] text-stone-400 mt-1 uppercase tracking-wider">
-                          {map.year}
+                          {chapter.status}
                         </p>
                       </div>
                     </Link>
@@ -122,8 +144,15 @@ export default function Home() {
             )}
           </div>
 
-          <a 
-            href="#contact" 
+          <a
+            href="#maps"
+            className="text-xs uppercase tracking-[0.2em] font-semibold text-stone-800 hover:text-stone-950 transition-colors duration-300 writing-mode-vertical-rl"
+          >
+            Mercator
+          </a>
+
+          <a
+            href="#contact"
             className="text-xs uppercase tracking-[0.2em] font-semibold text-stone-800 hover:text-stone-950 transition-colors duration-300 writing-mode-vertical-rl"
           >
             Contact
@@ -133,24 +162,50 @@ export default function Home() {
 
       <header id="about" className="max-w-6xl mx-auto px-8 py-20 text-center">
         <div className="text-[10px] uppercase tracking-[0.5em] font-semibold opacity-40 mb-6">
-          The Atlas of Gerardus Mercator
+          Monochrome Matters — Poster Collections
         </div>
         <h1 className="text-6xl md:text-7xl italic tracking-tight mb-8 text-stone-800 font-semibold">
-          The Mercator Archives
+          Archive Directions
         </h1>
         <div className="h-px w-24 bg-stone-200 mx-auto mb-8"></div>
         <p className="max-w-2xl mx-auto text-lg text-stone-500 leading-relaxed italic">
-          A curated collection of 57 masterworks from the 16th century.
+          Choose a collection direction to enter. Mercator is live today, and three new lines are ready to be built next.
         </p>
       </header>
 
+      <section className="max-w-6xl mx-auto px-8 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {chapters.map((chapter) => (
+            <Link
+              key={chapter.slug}
+              href={chapter.href}
+              className="group border border-stone-200 bg-white p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
+              <div className="text-[10px] uppercase tracking-[0.2em] font-bold text-stone-400 mb-4">
+                {chapter.status}
+              </div>
+              <h2 className="text-3xl italic font-semibold text-stone-800 mb-4 group-hover:text-stone-600 transition-colors">
+                {chapter.title}
+              </h2>
+              <p className="text-stone-500 leading-relaxed mb-6">{chapter.description}</p>
+              <span className="text-xs uppercase tracking-[0.2em] font-semibold text-stone-700 group-hover:text-stone-950 transition-colors">
+                Enter collection →
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section id="maps" className="max-w-6xl mx-auto px-8 pb-32">
         <div className="text-center mb-16">
-          <h2 className="text-4xl italic font-semibold text-stone-800 mb-4">The Collection</h2>
+          <h2 className="text-4xl italic font-semibold text-stone-800 mb-4">The Mercator Archives</h2>
           <div className="h-px w-16 bg-stone-200 mx-auto"></div>
+          <p className="max-w-2xl mx-auto text-stone-500 italic mt-6">
+            Active chapter with the current atlas product line.
+          </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
-          {maps.map((map) => (
+          {mercatorMaps.map((map) => (
             <Link key={map.id} href={`/map/${map.slug}`} className="group cursor-pointer flex flex-col">
               <div className="relative overflow-hidden bg-white p-4 shadow-sm transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 flex items-center justify-center">
                 <img 

@@ -19,6 +19,7 @@ function normalizeMap(input: MercatorMap): MercatorMap {
 
   return {
     ...input,
+    chapterSlug: input.chapterSlug ?? 'the-mercator-archives',
     printFiles,
     printImage: input.printImage ?? printFiles['2:3'],
     sizes: input.sizes ?? DEFAULT_SIZES,

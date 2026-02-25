@@ -1,10 +1,12 @@
 [
   {
     "id": "1",
+    "chapterSlug": "the-mercator-archives",
     "slug": "saxony",
     "title": "Lower Saxony & Mecklenburg",
     "year": "1569",
     "figure": "Figure 1.1: Saxonia Inferior et Meklenborg Dvc",
+    "description": "Rare 16th Century Antique Map of Northern Germany: Lower Saxony & Mecklenburg.\n\nJourney back to the Golden Age of cartography with this stunning digital scan of a genuine 17th-century copperplate engraved map.\n\nTHE HISTORICAL CONTEXT: This masterful piece depicts 'Saxonia Inferior et Meklenborg Dvc' — the historical regions of Lower Saxony and the Duchy of Mecklenburg. It shows a fascinating political landscape featuring prominent Hanseatic cities like Hamburg, Bremen, and Lübeck.\n\nAUTHENTIC DETAIL: This is not a modern recreation. It is a high-fidelity digital archive of an original antique atlas plate, capturing intricate copperplate engraving lines and the richly textured, aged paper of the period.",
     "image": "/maps/saxonia.jpg",
     "images": [
       "/maps/saxonia.jpg",
@@ -21,12 +23,11 @@
       "/maps/saxonia11.jpg",
       "/maps/saxonia12.jpg"
     ],
-    "printImage": "https://www.dropbox.com/scl/fi/w451se2v09zxwb1vumrr2/plate_01.jpg?rlkey=imoca3u4s6l8q8o8sfscnkwqa&st=2yq5oz4f&dl=1",
+    "printImage": "https://www.dropbox.com/scl/fi/btd3vxtkwtl7199wlfd40/asia_36x24.jpg?rlkey=3ogh30jf7x3l1qgw07ltouc6q&st=x87bil9r&dl=1",
     "printFiles": {
-      "2:3": "https://www.dropbox.com/scl/fi/w451se2v09zxwb1vumrr2/plate_01.jpg?rlkey=imoca3u4s6l8q8o8sfscnkwqa&st=2yq5oz4f&dl=1",
-      "3:4": "https://www.dropbox.com/scl/fi/w451se2v09zxwb1vumrr2/plate_01.jpg?rlkey=imoca3u4s6l8q8o8sfscnkwqa&st=2yq5oz4f&dl=1"
+      "2:3": "https://www.dropbox.com/scl/fi/btd3vxtkwtl7199wlfd40/asia_36x24.jpg?rlkey=3ogh30jf7x3l1qgw07ltouc6q&st=x87bil9r&dl=1",
+      "3:4": "https://www.dropbox.com/scl/fi/7ol4nifiuu4t5h5ld4vyc/asia_24x18.jpg?rlkey=y8xx4i2ybjewmcjrqgm36z5in&st=42tucwxi&dl=1"
     },
-    "description": "Rare 16th Century Antique Map of Northern Germany: Lower Saxony & Mecklenburg.\n\nJourney back to the Golden Age of cartography with this stunning digital scan of a genuine 17th-century copperplate engraved map.\n\nTHE HISTORICAL CONTEXT: This masterful piece depicts 'Saxonia Inferior et Meklenborg Dvc' — the historical regions of Lower Saxony and the Duchy of Mecklenburg. It shows a fascinating political landscape featuring prominent Hanseatic cities like Hamburg, Bremen, and Lübeck.\n\nAUTHENTIC DETAIL: This is not a modern recreation. It is a high-fidelity digital archive of an original antique atlas plate, capturing intricate copperplate engraving lines and the richly textured, aged paper of the period.",
     "sizes": [
       {
         "id": "3876",
@@ -96,7 +97,8 @@
         "price": 59,
         "ratio": "2:3"
       }
-    ]
+    ],
+    "chapterSlug": "the-mercator-archives"
   },
   {
     "id": "3",
@@ -129,6 +131,420 @@
       "3:4": "https://www.dropbox.com/scl/fi/r0uwqfdb84mrbp2xem0pp/plate_03.jpg?rlkey=20z61vcho1nmrqcufl1rbjbti&st=zqws835f&dl=1"
     },
     "description": "Rare 16th Century Antique Map of Asia: Mercator Family Masterpiece | Museum-Quality Historical Scan\n\nExplore the mysteries of the Orient through the eyes of the world's most famous cartographic dynasty. This is a stunning, high-fidelity digital scan of an original 17th-century map of Asia by Gerard Mercator the Younger.\n\nTHE HISTORICAL CONTEXT Based on the monumental geographical works of his grandfather, the legendary Gerard Mercator, this map titled 'ASIA' offers a fascinating glimpse into the world known at the turn of the 16th and 17th centuries. It covers not only the vast Asian continent and the East Indies but also includes early depictions of the Northern American coast (Americae Pars) and the mysterious Southern Land (Australis Pars).\n\nThe map is beautifully illustrated with a majestic sailing ship navigating the Pacific waters, symbolizing the era's adventurous spirit and global trade.\n\nAUTHENTIC DETAIL This is not a modern reproduction. It is a high-fidelity digital archive of an original antique atlas plate. It flawlessly captures the intricate copperplate engraving, original hand-applied watercolor, the central fold line from the historical atlas, and the rich, aged texture of the paper.\n\nA sophisticated addition to any home office, study, or library, perfect for history enthusiasts, world travelers, and lovers of classical cartography.",
+    "sizes": [
+      {
+        "id": "3876",
+        "label": "12x18\"",
+        "price": 35,
+        "ratio": "2:3"
+      },
+      {
+        "id": "1",
+        "label": "18x24\"",
+        "price": 45,
+        "ratio": "3:4"
+      },
+      {
+        "id": "2",
+        "label": "24x36\"",
+        "price": 59,
+        "ratio": "2:3"
+      }
+    ],
+    "chapterSlug": "the-mercator-archives"
+  },
+  {
+    "id": "1",
+    "chapterSlug": "nature-landscapes-noir",
+    "slug": "rocky-coast-seascape",
+    "title": "Rocky Coast Seascape",
+    "year": "",
+    "figure": "",
+    "description": "Vast Horizon & Rocky Coastline | Textured Black & White Seascape Print\n\nExperience the raw beauty and vast scale of the coast with this textured monochrome photograph. Large stone slabs in the foreground lead the eye into a calm sea stretching towards an infinite horizon under a expansive sky. This highly detailed print captures the grounding power of nature and the feeling of endless space. It makes a perfect calming centerpiece for a minimalist living room, spacious office, or bedroom.",
+    "image": "/Nature&Landscapes/rocky_coast1.webp",
+    "images": [
+      "/Nature&Landscapes/rocky_coast1.webp",
+      "/Nature&Landscapes/rocky_coast2.webp",
+      "/Nature&Landscapes/rocky_coast3.webp",
+      "/Nature&Landscapes/rocky_coast4.webp",
+      "/Nature&Landscapes/rocky_coast5.webp",
+      "/Nature&Landscapes/rocky_coast6.webp",
+      "/Nature&Landscapes/rocky_coast7.webp",
+      "/Nature&Landscapes/rocky_coast8.webp",
+      "/Nature&Landscapes/rocky_coast9.webp",
+      "/Nature&Landscapes/rocky_coast10.webp",
+      "/Nature&Landscapes/rocky_coast11.webp",
+      "/Nature&Landscapes/rocky_coast12.webp",
+      "/Nature&Landscapes/rocky_coast13.webp",
+      "/Nature&Landscapes/rocky_coast14.webp",
+      "/Nature&Landscapes/rocky_coast15.webp",
+      "/Nature&Landscapes/rocky_coast16.webp"
+    ],
+    "printImage": "",
+    "printFiles": {
+      "2:3": "",
+      "3:4": ""
+    },
+    "sizes": [
+      {
+        "id": "3876",
+        "label": "12x18\"",
+        "price": 35,
+        "ratio": "2:3"
+      },
+      {
+        "id": "1",
+        "label": "18x24\"",
+        "price": 45,
+        "ratio": "3:4"
+      },
+      {
+        "id": "2",
+        "label": "24x36\"",
+        "price": 59,
+        "ratio": "2:3"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "chapterSlug": "nature-landscapes-noir",
+    "slug": "coastal-stairs",
+    "title": "Coastal Stairs",
+    "year": "",
+    "figure": "",
+    "description": "Coastal Zen: Wooden Stairs to Crystal Clear Water | Textured Black & White Photograph\n\nImmerse yourself in the calming textures of the coast with this highly detailed monochrome photograph. Captured from above, a rustic wooden staircase leads the eye down to a rocky shore where incredibly transparent water reveals every stone beneath the surface. This print is a meditation on nature's textures and invites a sense of deep calm and clarity into any space. Perfect for a bathroom, bedroom, or minimalist living area.",
+    "image": "/Nature&Landscapes/stairs/coastal_stairs1.webp",
+    "images": [
+      "/Nature&Landscapes/stairs/coastal_stairs1.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs2.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs3.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs4.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs5.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs6.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs7.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs8.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs9.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs10.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs11.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs12.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs13.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs14.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs15.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs16.webp",
+      "/Nature&Landscapes/stairs/coastal_stairs17.webp"
+    ],
+    "printImage": "",
+    "printFiles": {
+      "2:3": "",
+      "3:4": ""
+    },
+    "sizes": [
+      {
+        "id": "3876",
+        "label": "12x18\"",
+        "price": 35,
+        "ratio": "2:3"
+      },
+      {
+        "id": "1",
+        "label": "18x24\"",
+        "price": 45,
+        "ratio": "3:4"
+      },
+      {
+        "id": "2",
+        "label": "24x36\"",
+        "price": 59,
+        "ratio": "2:3"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "chapterSlug": "nature-landscapes-noir",
+    "slug": "coastal-cottage",
+    "title": "Coastal Cottage",
+    "year": "",
+    "figure": "",
+    "description": "Solitary Keeper's Cottage at the Edge of the Sea | High-Contrast Film Aesthetic Print\n\nCapture the profound sense of solitude and the raw beauty of the coast with this striking monochrome photograph. A lone keeper’s dwelling stands firm on a rugged cliff against a vast, moody sky and deep sea waters. This high-contrast, atmospheric print is perfect for adding a cinematic, contemplative, or masculine feel to a living room, office, or study.",
+    "image": "/Nature&Landscapes/Coastal Cottage/Coastal_Cottage1.avif",
+    "images": [
+      "/Nature&Landscapes/Coastal Cottage/Coastal_Cottage1.avif",
+      "/Nature&Landscapes/Coastal Cottage/Coastal_Cottage2.jpg",
+      "/Nature&Landscapes/Coastal Cottage/Coastal_Cottage3.avif",
+      "/Nature&Landscapes/Coastal Cottage/Coastal_Cottage4.jpg",
+      "/Nature&Landscapes/Coastal Cottage/Coastal_Cottage5.jpg",
+      "/Nature&Landscapes/Coastal Cottage/Coastal_Cottage6.jpg",
+      "/Nature&Landscapes/Coastal Cottage/Coastal_Cottage7.jpg",
+      "/Nature&Landscapes/Coastal Cottage/Coastal_Cottage8.jpg",
+      "/Nature&Landscapes/Coastal Cottage/Coastal_Cottage9.jpg",
+      "/Nature&Landscapes/Coastal Cottage/Coastal_Cottage10.jpg",
+      "/Nature&Landscapes/Coastal Cottage/Coastal_Cottage11.jpg",
+      "/Nature&Landscapes/Coastal Cottage/Coastal_Cottage12.jpg",
+      "/Nature&Landscapes/Coastal Cottage/Coastal_Cottage13.jpg",
+      "/Nature&Landscapes/Coastal Cottage/Coastal_Cottage14.jpg"
+    ],
+    "printImage": "",
+    "printFiles": {
+      "2:3": "",
+      "3:4": ""
+    },
+    "sizes": [
+      {
+        "id": "3876",
+        "label": "12x18\"",
+        "price": 35,
+        "ratio": "2:3"
+      },
+      {
+        "id": "1",
+        "label": "18x24\"",
+        "price": 45,
+        "ratio": "3:4"
+      },
+      {
+        "id": "2",
+        "label": "24x36\"",
+        "price": 59,
+        "ratio": "2:3"
+      }
+    ]
+  },
+  {
+    "id": "1",
+    "chapterSlug": "vintage-japan-archives",
+    "slug": "vintage-nihonbashi-hosiery-ad",
+    "title": "Vintage Nihonbashi Hosiery Ad",
+    "year": "Vintage from the 1900s",
+    "figure": "",
+    "description": "Rare Vintage Japanese Textile Shop Advertisement with Lucky Charms | Museum-Quality Historical Scan\n\nDiscover the elegance of historical Tokyo commerce with this exceptional, museum-grade digital scan of a genuine antique advertising flyer for a textile merchant.\n\nTHE HISTORICAL CONTEXT This fascinating document serves as an advertisement for the \"Owari-ya Hoshino\" (尾張屋星野) fabric and hosiery store, located in the bustling Terifuricho district of Nihonbashi, Tokyo. The shop was conveniently situated \"right in front of the tram stop.\"\n\nThe illustration features a festive branch decorated with Mochibana lucky charms, a traditional New Year decoration. Hanging from the branch are tags promoting fashionable Western-style fabrics of the era: Meriyasu (knitted goods/hosiery), Neru (flannel), and Rasha (woolen cloth), alongside symbols of luck like the Otafuku mask and a wild boar.\n\nAUTHENTIC DETAIL This is not a modern recreation. It is a high-fidelity digital archive of an original historical document. It beautifully captures the aged, textured paper and the authentic character of the original black ink woodblock-style printing.\n\nA perfect piece for collectors of Japanese art, fashion historians, or anyone looking for a unique and culturally rich addition to their home decor.",
+    "image": "/Japan/Nihonbashi/nihonbashi1.jpg",
+    "images": [
+      "/Japan/Nihonbashi/nihonbashi1.jpg",
+      "/Japan/Nihonbashi/nihonbashi2.jpg",
+      "/Japan/Nihonbashi/nihonbashi3.avif",
+      "/Japan/Nihonbashi/nihonbashi4.avif",
+      "/Japan/Nihonbashi/nihonbashi5.avif",
+      "/Japan/Nihonbashi/nihonbashi6.avif",
+      "/Japan/Nihonbashi/nihonbashi7.jpg",
+      "/Japan/Nihonbashi/nihonbashi8.avif",
+      "/Japan/Nihonbashi/nihonbashi9.jpg",
+      "/Japan/Nihonbashi/nihonbashi10.jpg",
+      "/Japan/Nihonbashi/nihonbashi11.avif",
+      "/Japan/Nihonbashi/nihonbashi12.avif",
+      "/Japan/Nihonbashi/nihonbashi13.jpg"
+    ],
+    "printImage": "",
+    "printFiles": {
+      "2:3": "",
+      "3:4": ""
+    },
+    "sizes": [
+      {
+        "id": "3876",
+        "label": "12x18\"",
+        "price": 35,
+        "ratio": "2:3"
+      },
+      {
+        "id": "1",
+        "label": "18x24\"",
+        "price": 45,
+        "ratio": "3:4"
+      },
+      {
+        "id": "2",
+        "label": "24x36\"",
+        "price": 59,
+        "ratio": "2:3"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "chapterSlug": "vintage-japan-archives",
+    "slug": "vintage-from-the-1900s",
+    "title": "Vintage Japanese Champagne Ad",
+    "year": "Vintage from the 1900s",
+    "figure": "",
+    "description": "Rare Vintage Japanese \"Union Champagne\" Advertisement with Man in Bowler Hat | Museum-Quality Historical Scan\n\nExperience the fascinating blend of East and West in early 20th-century Japan with this exceptional, museum-grade digital scan of a genuine antique advertising flyer.\n\nTHE HISTORICAL CONTEXT This striking document is an advertisement for \"Union Champagne\" (ユニオンシヤンパン), distributed by the \"Tamagawa Western Liquor Shop\" in the Aoyama district of Tokyo. It perfectly captures the modernization and adoption of Western trends during the Meiji/Taisho era.\n\nThe illustration features a jolly man dressed in a full Western suit and bowler hat, enjoying a glass of sparkling wine. The text interestingly markets the champagne as a \"nutritious celebratory drink\" and notes that due to its low alcohol content, it is \"also suitable for ladies\".\n\nAUTHENTIC DETAIL This is not a modern recreation. It is a high-fidelity digital archive of an original historical document. It captures every nuance of the aged, textured paper, stains, and the authentic character of the original black ink printing.\n\nA perfect conversation piece for collectors of Japanese art, history enthusiasts, lovers of vintage typography, or anyone looking for truly unique barware decor.",
+    "image": "/Japan/Champagne/Champagne1.webp",
+    "images": [
+      "/Japan/Champagne/Champagne1.webp",
+      "/Japan/Champagne/Champagne2.webp",
+      "/Japan/Champagne/Champagne3.webp",
+      "/Japan/Champagne/Champagne4.webp",
+      "/Japan/Champagne/Champagne5.webp",
+      "/Japan/Champagne/Champagne6.webp",
+      "/Japan/Champagne/Champagne7.webp",
+      "/Japan/Champagne/Champagne8.webp",
+      "/Japan/Champagne/Champagne9.webp",
+      "/Japan/Champagne/Champagne10.webp",
+      "/Japan/Champagne/Champagne11.webp",
+      "/Japan/Champagne/Champagne12.webp",
+      "/Japan/Champagne/Champagne13.webp",
+      "/Japan/Champagne/Champagne14.webp",
+      "/Japan/Champagne/Champagne15.webp"
+    ],
+    "printImage": "",
+    "printFiles": {
+      "2:3": "",
+      "3:4": ""
+    },
+    "sizes": [
+      {
+        "id": "3876",
+        "label": "12x18\"",
+        "price": 35,
+        "ratio": "2:3"
+      },
+      {
+        "id": "1",
+        "label": "18x24\"",
+        "price": 45,
+        "ratio": "3:4"
+      },
+      {
+        "id": "2",
+        "label": "24x36\"",
+        "price": 59,
+        "ratio": "2:3"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "chapterSlug": "vintage-japan-archives",
+    "slug": "vintage-japanese-meat-shop-ad",
+    "title": "Vintage Japanese Meat Shop Ad",
+    "year": "Vintage from the 1900s",
+    "figure": "",
+    "description": "Rare Vintage Japanese Meat Shop Advertisement with Bicycle Delivery | Museum-Quality Historical Scan\n\nDive into the bustling streets of early 20th-century Tokyo with this exceptional, museum-grade digital scan of a genuine antique advertising flyer.\n\nTHE HISTORICAL CONTEXT This fascinating document is an advertisement for \"Mitake Beef Shop\" (三竹牛肉店), located in the Kyobashi district of Tokyo. It perfectly captures the modernization of the Meiji/Taisho era. The flyer highlights their status as an \"Imperial Army Supplier\" and promotes the sale of beef, chicken, and \"Western cuisine ingredients.\"\n\nMost notably, it features a detailed illustration of a bicycle pulling a delivery cart, advertising their modern \"express delivery service\" to customers anywhere in the city, regardless of distance.\n\nAUTHENTIC DETAIL This is not a modern recreation. It is a high-fidelity digital archive of an original historical document. It captures every nuance of the aged, textured paper, wear, and the authentic character of the original black ink printing.\n\nA perfect conversation piece for collectors of Japanese art, history enthusiasts, cyclists, or anyone looking for truly unique vintage decor.",
+    "image": "/Japan/bike/bike1.webp",
+    "images": [
+      "/Japan/bike/bike1.webp",
+      "/Japan/bike/bike2.webp",
+      "/Japan/bike/bike3.webp",
+      "/Japan/bike/bike4.webp",
+      "/Japan/bike/bike5.webp",
+      "/Japan/bike/bike6.webp",
+      "/Japan/bike/bike7.webp",
+      "/Japan/bike/bike8.webp",
+      "/Japan/bike/bike9.webp",
+      "/Japan/bike/bike10.webp",
+      "/Japan/bike/bike11.webp",
+      "/Japan/bike/bike12.webp",
+      "/Japan/bike/bike13.webp"
+    ],
+    "printImage": "",
+    "printFiles": {
+      "2:3": "",
+      "3:4": ""
+    },
+    "sizes": [
+      {
+        "id": "3876",
+        "label": "12x18\"",
+        "price": 35,
+        "ratio": "2:3"
+      },
+      {
+        "id": "1",
+        "label": "18x24\"",
+        "price": 45,
+        "ratio": "3:4"
+      },
+      {
+        "id": "2",
+        "label": "24x36\"",
+        "price": 59,
+        "ratio": "2:3"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "chapterSlug": "vintage-japan-archives",
+    "slug": "vintage-japanese-sumo-ad",
+    "title": "Vintage Japanese Sumo Ad",
+    "year": "Vintage from the 1900s",
+    "figure": "",
+    "description": "Rare Vintage Japanese Sumo Advertisement: Western Imports Wholesaler | Museum-Quality Historical Scan\n\nDiscover a fascinating piece of history where traditional Japanese culture meets early 20th-century commerce. This is an exceptional, museum-grade digital scan of a genuine antique advertising flyer featuring a powerful Sumo wrestler (rikishi) in a ceremonial apron.\n\nTHE HISTORICAL CONTEXT This flyer is a wonderful example of the Meiji/Taisho era modernization. While using a traditional symbol of strength—a Sumo wrestler—the text actually advertises \"Takahashi Shoten,\" a Tokyo-based wholesaler specializing in imported Western liquor, canned foods, and provisions. It lists their location in Nihonbashi and old telephone numbers for Osaka.\n\nAUTHENTIC DETAIL This is not a modern recreation. It is a high-fidelity digital archive of an original historical document. It captures every nuance of the aged, textured paper, stains, creases, and the authentic character of the original printing.\n\nA perfect conversation piece for collectors of Japanese art, history enthusiasts, or anyone looking for truly unique vintage decor.",
+    "image": "/Japan/sumo/sumo1.webp",
+    "images": [
+      "/Japan/sumo/sumo1.webp",
+      "/Japan/sumo/sumo2.webp",
+      "/Japan/sumo/sumo3.webp",
+      "/Japan/sumo/sumo4.webp",
+      "/Japan/sumo/sumo5.webp",
+      "/Japan/sumo/sumo6.webp",
+      "/Japan/sumo/sumo7.webp",
+      "/Japan/sumo/sumo8.webp",
+      "/Japan/sumo/sumo9.webp",
+      "/Japan/sumo/sumo10.webp",
+      "/Japan/sumo/sumo11.webp",
+      "/Japan/sumo/sumo12.webp",
+      "/Japan/sumo/sumo13.webp",
+      "/Japan/sumo/sumo14.webp",
+      "/Japan/sumo/sumo15.webp",
+      "/Japan/sumo/sumo16.webp",
+      "/Japan/sumo/sumo17.jpg"
+    ],
+    "printImage": "",
+    "printFiles": {
+      "2:3": "",
+      "3:4": ""
+    },
+    "sizes": [
+      {
+        "id": "3876",
+        "label": "12x18\"",
+        "price": 35,
+        "ratio": "2:3"
+      },
+      {
+        "id": "1",
+        "label": "18x24\"",
+        "price": 45,
+        "ratio": "3:4"
+      },
+      {
+        "id": "2",
+        "label": "24x36\"",
+        "price": 59,
+        "ratio": "2:3"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "chapterSlug": "vintage-japan-archives",
+    "slug": "vintage-japanese-theatre-ad",
+    "title": "Vintage Japanese Theatre Ad",
+    "year": "Vintage from the 1900s",
+    "figure": "",
+    "description": "Rare Vintage Japanese Theatre Program Cover & Advertisement: Kabuki Actor for Mitsukoshi | High-Resolution Historical Scan\n\nStep back in time with this exceptional digital scan of a genuine antique Japanese theatre program cover (playbill). This fascinating piece, likely from the late Meiji or Taisho period, features a striking illustration of a Kabuki actor in a samurai role.\n\nIt historically serves as an advertisement for the famous Mitsukoshi department store, with the main text encouraging patrons to enjoy the theatre today and visit the store tomorrow.\n\nThis is not a modern recreation. It is a high-fidelity digital archive of an original historical document, capturing every detail of the aged paper texture, authentic colors, and the unique character of antique red and black ink printing.\n\nA perfect piece of history for collectors of Japanese art, lovers of vintage aesthetics, or anyone looking to add a truly unique and culturally rich accent to their interior.",
+    "image": "/Japan/samurai/samurai1.webp",
+    "images": [
+      "/Japan/samurai/samurai1.webp",
+      "/Japan/samurai/samurai2.webp",
+      "/Japan/samurai/samurai3.webp",
+      "/Japan/samurai/samurai4.webp",
+      "/Japan/samurai/samurai5.webp",
+      "/Japan/samurai/samurai6.webp",
+      "/Japan/samurai/samurai7.webp",
+      "/Japan/samurai/samurai8.webp",
+      "/Japan/samurai/samurai9.webp",
+      "/Japan/samurai/samurai10.webp",
+      "/Japan/samurai/samurai11.webp",
+      "/Japan/samurai/samurai12.webp"
+    ],
+    "printImage": "",
+    "printFiles": {
+      "2:3": "",
+      "3:4": ""
+    },
     "sizes": [
       {
         "id": "3876",

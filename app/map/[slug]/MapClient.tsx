@@ -10,7 +10,15 @@ const workSans = Work_Sans({
   variable: '--font-work-sans'
 });
 
-export default function MapClient({ mapData }: { mapData: MercatorMap }) {
+export default function MapClient({
+  mapData,
+  collectionTitle,
+  collectionHref,
+}: {
+  mapData: MercatorMap;
+  collectionTitle: string;
+  collectionHref: string;
+}) {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -55,9 +63,9 @@ export default function MapClient({ mapData }: { mapData: MercatorMap }) {
   return (
     <main className={`${workSans.variable} min-h-screen bg-[#fdfcfb] text-[#1a1a1a] font-sans`}>
       <nav className="max-w-6xl mx-auto px-8 py-10 flex justify-between items-center">
-        <Link href="/" className="text-[10px] uppercase tracking-[0.4em] font-semibold opacity-40 hover:opacity-100 transition-opacity">← Back to Atlas</Link>
-        <h1 className="text-4xl italic tracking-tight text-center">The Mercator Archives</h1>
-        <div className="text-[10px] uppercase tracking-[0.4em] font-semibold opacity-40">Plate {mapData.id}/57</div>
+        <Link href={collectionHref} className="text-[10px] uppercase tracking-[0.4em] font-semibold opacity-40 hover:opacity-100 transition-opacity">← Back to Collection</Link>
+        <h1 className="text-4xl italic tracking-tight text-center">{collectionTitle}</h1>
+        <div className="text-[10px] uppercase tracking-[0.4em] font-semibold opacity-40">Plate {mapData.id}</div>
       </nav>
 
       <section className="max-w-6xl mx-auto px-8 py-12 grid grid-cols-2 gap-24 items-start">
@@ -112,7 +120,7 @@ export default function MapClient({ mapData }: { mapData: MercatorMap }) {
         </div>
 
         <div className="flex flex-col justify-start space-y-12">
-          <span className="text-stone-400 uppercase text-[10px] tracking-[0.3em] font-bold block">Masterpiece Series</span>
+          <span className="text-stone-400 uppercase text-[10px] tracking-[0.3em] font-bold block">Collection Item</span>
           <h2 className="text-5xl leading-tight font-semibold">{mapData.title}</h2>
 
           <div className="text-[17px] leading-relaxed text-stone-700 mb-10 mt-4">
