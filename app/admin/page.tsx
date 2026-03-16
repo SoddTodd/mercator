@@ -39,7 +39,7 @@ const EMPTY_CHAPTER: Chapter = {
   seoTitle: '',
   seoDescription: '',
   href: '',
-  status: 'New direction',
+  status: 'Live Collections',
   isLive: false,
 };
 
@@ -583,10 +583,9 @@ export default function AdminPage() {
                 <select
                   className="w-full border border-stone-300 rounded px-3 py-2"
                   value={chapterForm.status}
-                  onChange={(e) => setChapterForm((prev) => ({ ...prev, status: e.target.value === 'Live collection' ? 'Live collection' : 'New direction' }))}
+                  onChange={() => setChapterForm((prev) => ({ ...prev, status: 'Live Collections' }))}
                 >
-                  <option value="New direction">New direction</option>
-                  <option value="Live collection">Live collection</option>
+                  <option value="Live Collections">Live Collections</option>
                 </select>
               </label>
               <label className="text-sm flex items-center gap-3 mt-6">
@@ -595,7 +594,7 @@ export default function AdminPage() {
                   checked={chapterForm.isLive}
                   onChange={(e) => setChapterForm((prev) => ({ ...prev, isLive: e.target.checked }))}
                 />
-                <span>Live collection</span>
+                <span>Live Collections</span>
               </label>
             </div>
           )}

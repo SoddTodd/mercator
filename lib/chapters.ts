@@ -8,7 +8,7 @@ export type Chapter = {
   seoTitle?: string;
   seoDescription?: string;
   href: string;
-  status: 'Live collection' | 'New direction';
+  status: 'Live Collections';
   isLive: boolean;
 };
 
@@ -23,8 +23,8 @@ export const DEFAULT_CHAPTERS: Chapter[] = [
     seoTitle: 'Nature & Landscapes Noir Posters',
     seoDescription: 'Atmospheric monochrome nature and landscape poster collection.',
     href: '/collections/nature-landscapes-noir',
-    status: 'New direction',
-    isLive: false,
+    status: 'Live Collections',
+    isLive: true,
   },
   {
     id: '02',
@@ -36,8 +36,8 @@ export const DEFAULT_CHAPTERS: Chapter[] = [
     seoTitle: 'Vintage Japan Archives Posters',
     seoDescription: 'Curated vintage Japan inspired poster chapter.',
     href: '/collections/vintage-japan-archives',
-    status: 'New direction',
-    isLive: false,
+    status: 'Live Collections',
+    isLive: true,
   },
   {
     id: '03',
@@ -49,7 +49,7 @@ export const DEFAULT_CHAPTERS: Chapter[] = [
     seoTitle: 'The Mercator Archives Posters',
     seoDescription: 'Historical atlas posters from The Mercator Archives.',
     href: '/collections/the-mercator-archives',
-    status: 'Live collection',
+    status: 'Live Collections',
     isLive: true,
   },
   {
@@ -62,8 +62,8 @@ export const DEFAULT_CHAPTERS: Chapter[] = [
     seoTitle: 'Engineering & Patents Posters',
     seoDescription: 'Technical engineering and patent-era poster collection.',
     href: '/collections/engineering-patents',
-    status: 'New direction',
-    isLive: false,
+    status: 'Live Collections',
+    isLive: true,
   },
 ];
 

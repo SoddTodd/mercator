@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
       seoTitle: body.seoTitle?.toString()?.trim() || body.title?.toString()?.trim() || 'Untitled chapter',
       seoDescription: body.seoDescription?.toString()?.trim() || body.description?.toString() || '',
       href: body.href?.toString()?.trim() || `/collections/${body.slug?.toString()?.trim() || ''}`,
-      status: body.status === 'Live collection' ? 'Live collection' : 'New direction',
+      status: 'Live Collections',
       isLive: Boolean(body.isLive),
     };
 

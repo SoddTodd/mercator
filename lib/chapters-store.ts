@@ -13,7 +13,7 @@ function normalizeChapter(input: Chapter): Chapter {
     heroImage: input.heroImage || '',
     seoTitle: input.seoTitle || input.title,
     seoDescription: input.seoDescription || input.description,
-    status: input.status || 'New direction',
+    status: input.status || 'Live Collections',
     isLive: Boolean(input.isLive),
   };
 }
