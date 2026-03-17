@@ -30,6 +30,22 @@ Then restart dev server and open:
 
 - [http://localhost:3000/admin](http://localhost:3000/admin)
 
+## Cookie Consent and Tracking
+
+The storefront includes a consent banner with three choices: accept all, reject optional, and customize.
+
+- Essential cookies are always on.
+- Analytics and marketing scripts load only after consent.
+
+Optional tracking environment variables:
+
+```bash
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_META_PIXEL_ID=123456789012345
+```
+
+If these variables are not set, no corresponding tracking script is injected.
+
 You will be redirected to `/admin/login` and prompted for the password.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
