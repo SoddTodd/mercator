@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { Chapter, DEFAULT_CHAPTERS, sortChapters } from '../../lib/chapters';
 import { MapSize, MercatorMap } from '../../lib/maps';
+import { ImageUploadButton } from './ImageUploadButton';
 
 const DEFAULT_SIZES: MapSize[] = [
   { id: '3876', label: '12x18"', price: 35, ratio: '2:3' },
@@ -462,46 +463,66 @@ export default function AdminPage() {
               <div className="mb-1">Description</div>
               <textarea className="w-full border border-stone-300 rounded px-3 py-2 min-h-40" value={form.description} onChange={(e) => updateField('description', e.target.value)} />
             </label>
-            <label className="text-sm md:col-span-2">
+            <div className="text-sm md:col-span-2">
               <div className="mb-1">Preview Cover Image URL</div>
-              <input className="w-full border border-stone-300 rounded px-3 py-2" value={form.image || ''} onChange={(e) => updateField('image', e.target.value)} />
-            </label>
-            <label className="text-sm md:col-span-2">
-              <div className="mb-1">Gallery Image URLs (one per line)</div>
+              <div className="flex gap-2">
+                <input className="flex-1 border border-stone-300 rounded px-3 py-2" value={form.image || ''} onChange={(e) => updateField('image', e.target.value)} />
+                <ImageUploadButton folder="mercator/preview" label="Upload" onUpload={(url) => updateField('image', url)} />
+              </div>
+              {form.image && <img src={form.image} alt="preview" className="mt-2 h-20 object-contain border border-stone-200 rounded" />}
+            </div>
+            <div className="text-sm md:col-span-2">
+              <div className="flex items-center justify-between mb-1">
+                <span>Gallery Image URLs (one per line)</span>
+                <ImageUploadButton folder="mercator/gallery" label="Upload &amp; Add" onUpload={(url) => updateField('images', [...(form.images ?? []).filter(Boolean), url])} />
+              </div>
               <textarea
                 className="w-full border border-stone-300 rounded px-3 py-2 min-h-32"
                 value={(form.images ?? []).join('\n')}
                 onChange={(e) => updateField('images', e.target.value.split('\n'))}
               />
-            </label>
-            <label className="text-sm md:col-span-2">
+              {(form.images ?? []).filter(Boolean).length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {(form.images ?? []).filter(Boolean).map((url, i) => (
+                    <img key={i} src={url} alt={`gallery ${i + 1}`} className="h-16 object-contain border border-stone-200 rounded" />
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className="text-sm md:col-span-2">
               <div className="mb-1">Print File URL (ratio 2:3)</div>
-              <input
-                className="w-full border border-stone-300 rounded px-3 py-2"
-                value={form.printFiles?.['2:3'] || ''}
-                onChange={(e) =>
-                  updateField('printFiles', {
-                    ...form.printFiles,
-                    '2:3': e.target.value,
-                    '3:4': form.printFiles?.['3:4'] || '',
-                  })
-                }
-              />
-            </label>
-            <label className="text-sm md:col-span-2">
+              <div className="flex gap-2">
+                <input
+                  className="flex-1 border border-stone-300 rounded px-3 py-2"
+                  value={form.printFiles?.['2:3'] || ''}
+                  onChange={(e) =>
+                    updateField('printFiles', {
+                      ...form.printFiles,
+                      '2:3': e.target.value,
+                      '3:4': form.printFiles?.['3:4'] || '',
+                    })
+                  }
+                />
+                <ImageUploadButton folder="mercator/print" label="Upload" onUpload={(url) => updateField('printFiles', { ...form.printFiles, '2:3': url, '3:4': form.printFiles?.['3:4'] || '' })} />
+              </div>
+            </div>
+            <div className="text-sm md:col-span-2">
               <div className="mb-1">Print File URL (ratio 3:4)</div>
-              <input
-                className="w-full border border-stone-300 rounded px-3 py-2"
-                value={form.printFiles?.['3:4'] || ''}
-                onChange={(e) =>
-                  updateField('printFiles', {
-                    ...form.printFiles,
-                    '3:4': e.target.value,
-                    '2:3': form.printFiles?.['2:3'] || '',
-                  })
-                }
-              />
-            </label>
+              <div className="flex gap-2">
+                <input
+                  className="flex-1 border border-stone-300 rounded px-3 py-2"
+                  value={form.printFiles?.['3:4'] || ''}
+                  onChange={(e) =>
+                    updateField('printFiles', {
+                      ...form.printFiles,
+                      '3:4': e.target.value,
+                      '2:3': form.printFiles?.['2:3'] || '',
+                    })
+                  }
+                />
+                <ImageUploadButton folder="mercator/print" label="Upload" onUpload={(url) => updateField('printFiles', { ...form.printFiles, '3:4': url, '2:3': form.printFiles?.['2:3'] || '' })} />
+              </div>
+            </div>
           </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -546,14 +567,18 @@ export default function AdminPage() {
                   onChange={(e) => setChapterForm((prev) => ({ ...prev, description: e.target.value }))}
                 />
               </label>
-              <label className="text-sm md:col-span-2">
+              <div className="text-sm md:col-span-2">
                 <div className="mb-1">Hero Image URL</div>
-                <input
-                  className="w-full border border-stone-300 rounded px-3 py-2"
-                  value={chapterForm.heroImage || ''}
-                  onChange={(e) => setChapterForm((prev) => ({ ...prev, heroImage: e.target.value }))}
-                />
-              </label>
+                <div className="flex gap-2">
+                  <input
+                    className="flex-1 border border-stone-300 rounded px-3 py-2"
+                    value={chapterForm.heroImage || ''}
+                    onChange={(e) => setChapterForm((prev) => ({ ...prev, heroImage: e.target.value }))}
+                  />
+                  <ImageUploadButton folder="mercator/chapters" label="Upload" onUpload={(url) => setChapterForm((prev) => ({ ...prev, heroImage: url }))} />
+                </div>
+                {chapterForm.heroImage && <img src={chapterForm.heroImage} alt="hero preview" className="mt-2 h-20 object-contain border border-stone-200 rounded" />}
+              </div>
               <label className="text-sm md:col-span-2">
                 <div className="mb-1">SEO Title</div>
                 <input

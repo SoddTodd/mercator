@@ -207,11 +207,11 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
           {mercatorMaps.map((map) => (
             <Link key={map.id} href={`/map/${map.slug}`} className="group cursor-pointer flex flex-col">
-              <div className="relative overflow-hidden bg-white p-4 shadow-sm transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 flex items-center justify-center">
+              <div className="relative overflow-hidden bg-white p-4 shadow-sm transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 flex items-center justify-center" style={{ height: '320px' }}>
                 <img 
                   src={map.image || '/maps/saxonia4.avif'} 
                   alt={map.title}
-                  className="w-auto h-auto max-w-full object-contain grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
+                  className="max-w-full max-h-full object-contain grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
                 />
               </div>
               <div className="mt-6 text-center">

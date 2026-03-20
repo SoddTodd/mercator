@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { Work_Sans } from 'next/font/google';
 import type { MercatorMap } from '../../../lib/maps';
@@ -21,6 +21,8 @@ export default function MapClient({
 }) {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [zoomOpen, setZoomOpen] = useState(false);
+  const [zoomIndex, setZoomIndex] = useState(0);
 
   // images array (supports old `image` field for backward compatibility)
   // Always use images array if available, otherwise fall back to single image
@@ -35,6 +37,27 @@ export default function MapClient({
   }, [mapData.images, mapData.image]);
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openZoom = useCallback((idx: number) => {
+    setZoomIndex(idx);
+    setZoomOpen(true);
+  }, []);
+
+  const closeZoom = useCallback(() => setZoomOpen(false), []);
+
+  const zoomPrev = useCallback(() => setZoomIndex(i => (i - 1 + images.length) % images.length), [images.length]);
+  const zoomNext = useCallback(() => setZoomIndex(i => (i + 1) % images.length), [images.length]);
+
+  useEffect(() => {
+    if (!zoomOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeZoom();
+      if (e.key === 'ArrowLeft') zoomPrev();
+      if (e.key === 'ArrowRight') zoomNext();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [zoomOpen, closeZoom, zoomPrev, zoomNext]);
 
   const selected = mapData.sizes?.find(s => s.id === selectedSize) ?? null;
 
@@ -72,18 +95,26 @@ export default function MapClient({
         <div className="sticky top-12 flex flex-col justify-start">
           <div className="bg-white p-6 shadow-xl flex flex-col items-center">
             {/* Main image */}
-            <div className="w-full flex items-center justify-center bg-white rounded-sm">
+            <div className="w-full bg-white rounded-sm" style={{ height: '520px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               {images.length > 0 ? (
-                <div className="w-full flex items-center justify-center">
+                <button
+                  onClick={() => openZoom(currentImageIndex)}
+                  className="w-full h-full flex items-center justify-center cursor-zoom-in group/zoom relative"
+                  aria-label="Увеличить изображение"
+                  style={{ background: 'none', border: 'none', padding: 0 }}
+                >
                   <img
                     src={images[currentImageIndex]}
                     alt={`${mapData.title} image ${currentImageIndex + 1}`}
-                    className="max-w-full max-h-[65vh] object-contain grayscale-[15%] hover:grayscale-0 transition-all duration-700"
+                    className="max-w-full max-h-full object-contain grayscale-[15%] group-hover/zoom:grayscale-0 transition-all duration-700"
                     loading="lazy"
                   />
-                </div>
+                  <span className="absolute bottom-2 right-2 bg-white/80 text-stone-500 text-[10px] uppercase tracking-[0.15em] px-2 py-1 rounded opacity-0 group-hover/zoom:opacity-100 transition-opacity pointer-events-none">
+                    ⊕ Zoom
+                  </span>
+                </button>
               ) : (
-                <div className="w-full h-64 bg-stone-100 flex items-center justify-center text-stone-400">No image</div>
+                <div className="w-full h-full bg-stone-100 flex items-center justify-center text-stone-400">No image</div>
               )}
             </div>
 
@@ -207,6 +238,67 @@ export default function MapClient({
           </div>
         </div>
       </section>
+
+      {/* Lightbox / Zoom overlay */}
+      {zoomOpen && (
+        <div
+          className="fixed inset-0 z-[200] flex items-center justify-center"
+          style={{ background: 'rgba(0,0,0,0.88)' }}
+          onClick={closeZoom}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Image zoom"
+        >
+          {/* Close button */}
+          <button
+            onClick={closeZoom}
+            className="absolute top-5 right-6 text-white/70 hover:text-white text-3xl leading-none transition-colors z-10"
+            aria-label="Close"
+            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+          >
+            ✕
+          </button>
+
+          {/* Prev */}
+          {images.length > 1 && (
+            <button
+              onClick={(e) => { e.stopPropagation(); zoomPrev(); }}
+              className="absolute left-5 text-white/60 hover:text-white text-4xl leading-none transition-colors z-10"
+              aria-label="Previous image"
+              style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+            >
+              ‹
+            </button>
+          )}
+
+          <img
+            src={images[zoomIndex]}
+            alt={`${mapData.title} image ${zoomIndex + 1}`}
+            className="max-w-[90vw] max-h-[90vh] object-contain shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+            style={{ borderRadius: '2px' }}
+          />
+
+          {/* Next */}
+          {images.length > 1 && (
+            <button
+              onClick={(e) => { e.stopPropagation(); zoomNext(); }}
+              className="absolute right-5 text-white/60 hover:text-white text-4xl leading-none transition-colors z-10"
+              aria-label="Next image"
+              style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+            >
+              ›
+            </button>
+          )}
+
+          {/* Counter */}
+          {images.length > 1 && (
+            <div className="absolute bottom-5 text-white/50 text-[11px] uppercase tracking-[0.2em]">
+              {zoomIndex + 1} / {images.length}
+            </div>
+          )}
+        </div>
+      )}
     </main>
   );
 }
