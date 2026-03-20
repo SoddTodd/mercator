@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Work_Sans } from 'next/font/google';
-import { MAPS, MercatorMap } from '../lib/maps';
 import { Chapter, DEFAULT_CHAPTERS, sortChapters } from '../lib/chapters';
 
 const workSans = Work_Sans({ 
@@ -13,7 +12,6 @@ const workSans = Work_Sans({
 
 export default function Home() {
   const [showChapterMenu, setShowChapterMenu] = useState(false);
-  const [maps, setMaps] = useState<MercatorMap[]>(MAPS);
   const [chapters, setChapters] = useState<Chapter[]>(sortChapters(DEFAULT_CHAPTERS));
   const closeMenuTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -39,23 +37,6 @@ export default function Home() {
   React.useEffect(() => {
     let cancelled = false;
 
-    async function loadMaps() {
-      try {
-        const response = await fetch('/api/maps');
-        if (!response.ok) return;
-        const nextMaps = (await response.json()) as MercatorMap[];
-        if (!cancelled && Array.isArray(nextMaps) && nextMaps.length > 0) {
-          setMaps(
-            nextMaps.map((map) => ({
-              ...map,
-              chapterSlug: map.chapterSlug || 'the-mercator-archives',
-            }))
-          );
-        }
-      } catch {
-      }
-    }
-
     async function loadChapters() {
       try {
         const response = await fetch('/api/chapters');
@@ -68,17 +49,11 @@ export default function Home() {
       }
     }
 
-    loadMaps();
     loadChapters();
     return () => {
       cancelled = true;
     };
   }, []);
-
-  const mercatorMaps = React.useMemo(
-    () => maps.filter((map) => (map.chapterSlug || 'the-mercator-archives') === 'the-mercator-archives'),
-    [maps]
-  );
 
   React.useEffect(() => {
     return () => {
@@ -145,13 +120,6 @@ export default function Home() {
           </div>
 
           <a
-            href="#maps"
-            className="text-xs uppercase tracking-[0.2em] font-semibold text-stone-800 hover:text-stone-950 transition-colors duration-300 writing-mode-vertical-rl"
-          >
-            Mercator
-          </a>
-
-          <a
             href="#contact"
             className="text-xs uppercase tracking-[0.2em] font-semibold text-stone-800 hover:text-stone-950 transition-colors duration-300 writing-mode-vertical-rl"
           >
@@ -169,7 +137,7 @@ export default function Home() {
         </h1>
         <div className="h-px w-24 bg-stone-200 mx-auto mb-8"></div>
         <p className="max-w-2xl mx-auto text-lg text-stone-500 leading-relaxed italic">
-          Choose a collection direction to enter. Mercator is live today, and three new lines are ready to be built next.
+          Choose a collection direction to enter and discover each chapter in one unified archive view.
         </p>
       </header>
 
@@ -191,37 +159,6 @@ export default function Home() {
               <span className="text-xs uppercase tracking-[0.2em] font-semibold text-stone-700 group-hover:text-stone-950 transition-colors">
                 Enter collection →
               </span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section id="maps" className="max-w-6xl mx-auto px-8 pb-32">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl italic font-semibold text-stone-800 mb-4">The Mercator Archives</h2>
-          <div className="h-px w-16 bg-stone-200 mx-auto"></div>
-          <p className="max-w-2xl mx-auto text-stone-500 italic mt-6">
-            Active chapter with the current atlas product line.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
-          {mercatorMaps.map((map) => (
-            <Link key={map.id} href={`/map/${map.slug}`} className="group cursor-pointer flex flex-col">
-              <div className="relative overflow-hidden bg-white p-4 shadow-sm transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 flex items-center justify-center" style={{ height: '320px' }}>
-                <img 
-                  src={map.image || '/maps/saxonia4.avif'} 
-                  alt={map.title}
-                  className="max-w-full max-h-full object-contain grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
-                />
-              </div>
-              <div className="mt-6 text-center">
-                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-stone-400">
-                  {map.year} / Plate {map.id.padStart(2, '0')}
-                </span>
-                <h3 className="text-2xl mt-2 group-hover:text-stone-600 transition-colors px-4 leading-tight font-medium">
-                  {map.title}
-                </h3>
-              </div>
             </Link>
           ))}
         </div>
