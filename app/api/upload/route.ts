@@ -51,7 +51,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ url: result.secure_url, publicId: result.public_id });
   } catch (err) {
     console.error('[upload] error:', err);
-    const message = err instanceof Error ? err.message : String(err);
+    let message = 'Upload failed';
+    if (err instanceof Error) {
+      message = err.message;
+    } else if (err && typeof err === 'object') {
+      const e = err as Record<string, unknown>;
+      message = String(e.message ?? e.error ?? e.http_code ?? JSON.stringify(err));
+    }
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
