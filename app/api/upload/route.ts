@@ -1,15 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { v2 as cloudinary } from 'cloudinary';
+import { randomUUID } from 'node:crypto';
+import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { isAuthorizedRequest } from '../../../lib/admin-auth';
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/gif', 'image/tiff', 'application/pdf'];
+const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100 MB default limit for print-ready files
+const MAX_FILE_SIZE_MB = Math.floor(MAX_FILE_SIZE / (1024 * 1024));
 
-const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/gif', 'image/tiff'];
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB (Cloudinary free plan limit)
+function getRequiredEnv(name: string) {
+  const value = process.env[name];
+  if (!value) {
+    throw new Error(`Missing environment variable: ${name}`);
+  }
+  return value;
+}
+
+function getFileExtension(file: File) {
+  const fromName = file.name.split('.').pop()?.toLowerCase();
+  if (fromName && fromName.length <= 10) {
+    return fromName;
+  }
+
+  const fromMime = file.type.split('/')[1]?.toLowerCase();
+  if (!fromMime) return 'bin';
+  if (fromMime === 'jpeg') return 'jpg';
+  if (fromMime.includes('+')) return fromMime.split('+')[0];
+  return fromMime;
+}
+
+function buildPublicUrl(key: string) {
+  const customBase = getRequiredEnv('R2_PUBLIC_BASE_URL');
+  return `${customBase.replace(/\/$/, '')}/${key}`;
+}
 
 export async function POST(req: NextRequest) {
   if (!isAuthorizedRequest(req)) {
@@ -30,25 +52,42 @@ export async function POST(req: NextRequest) {
     }
 
     if (file.size > MAX_FILE_SIZE) {
-      return NextResponse.json({ error: 'File exceeds 50 MB limit' }, { status: 400 });
+      return NextResponse.json({ error: `File exceeds ${MAX_FILE_SIZE_MB} MB limit` }, { status: 400 });
     }
 
     // Sanitize folder — allow only alphanumeric, dashes, underscores, slashes
     const safeFolder = folder.replace(/[^a-zA-Z0-9_\-/]/g, '').slice(0, 100) || 'mercator';
 
+    const accountId = getRequiredEnv('R2_ACCOUNT_ID');
+    const accessKeyId = getRequiredEnv('R2_ACCESS_KEY_ID');
+    const secretAccessKey = getRequiredEnv('R2_SECRET_ACCESS_KEY');
+    const bucket = getRequiredEnv('R2_BUCKET_NAME');
+
+    const s3 = new S3Client({
+      region: 'auto',
+      endpoint: `https://${accountId}.r2.cloudflarestorage.com`,
+      credentials: { accessKeyId, secretAccessKey },
+    });
+
+    const extension = getFileExtension(file);
+    const key = `${safeFolder}/${Date.now()}-${randomUUID()}.${extension}`;
+
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const result = await new Promise<{ secure_url: string; public_id: string }>((resolve, reject) => {
-      cloudinary.uploader
-        .upload_stream({ folder: safeFolder, resource_type: 'auto' }, (error, res) => {
-          if (error || !res) reject(error ?? new Error('Upload failed'));
-          else resolve(res as { secure_url: string; public_id: string });
-        })
-        .end(buffer);
-    });
+    await s3.send(
+      new PutObjectCommand({
+        Bucket: bucket,
+        Key: key,
+        Body: buffer,
+        ContentType: file.type || undefined,
+      })
+    );
 
-    return NextResponse.json({ url: result.secure_url, publicId: result.public_id });
+    return NextResponse.json({
+      url: buildPublicUrl(key),
+      key,
+    });
   } catch (err) {
     console.error('[upload] error:', err);
     let message = 'Upload failed';

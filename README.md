@@ -30,6 +30,25 @@ Then restart dev server and open:
 
 - [http://localhost:3000/admin](http://localhost:3000/admin)
 
+## Upload Storage (Cloudflare R2)
+
+Admin uploads now use Cloudflare R2 (S3-compatible API).
+
+Required environment variables:
+
+```bash
+R2_ACCOUNT_ID=your-cloudflare-account-id
+R2_ACCESS_KEY_ID=your-r2-access-key-id
+R2_SECRET_ACCESS_KEY=your-r2-secret-access-key
+R2_BUCKET_NAME=your-r2-bucket-name
+R2_PUBLIC_BASE_URL=https://your-public-r2-domain
+```
+
+Notes:
+
+- `R2_PUBLIC_BASE_URL` should be a public endpoint to your bucket (for example your custom domain or `https://<public-id>.r2.dev`).
+- The upload API currently allows files up to 100 MB.
+
 ## Cookie Consent and Tracking
 
 The storefront includes a consent banner with three choices: accept all, reject optional, and customize.
