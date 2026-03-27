@@ -9,7 +9,7 @@ cloudinary.config({
 });
 
 const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/gif', 'image/tiff'];
-const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50 MB (print files can be large)
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB (Cloudinary free plan limit)
 
 export async function POST(req: NextRequest) {
   if (!isAuthorizedRequest(req)) {
